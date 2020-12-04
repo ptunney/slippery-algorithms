@@ -1,0 +1,46 @@
+Write a function that takes a set of strings as input, runs in constant time,
+* and returns a string from the set that would be somewhat more likely to sort
+* near the middle of the list (if one were to sort the list) than just any random selection.
+*/
+
+public String pickPivot(Set<String> unorderedSet) {
+if (unorderedSet.isEmpty()) {
+return null;
+}
+Iterator<String> it = unorderedSet.iterator();
+String first = it.next();
+String second;
+
+if (it.hasNext()) {
+second = it.next()
+}
+
+String third;
+if (it.hasNext()) {
+third = it.next();
+} else {
+// size <= 2
+return first;
+}
+
+if (first.compareTo(second) > 0 ) // 1 {
+// first > second
+if (second.compareTo(third) > 0) //1 {
+// first > second > third
+return second;
+} else { // first > third > second
+
+return third
+}
+} else {
+// second > first
+if (first.compareTo(third) > 0) {
+// second > first > third
+return first;
+} else {
+// second > third > first
+return third;
+}
+}
+
+}
